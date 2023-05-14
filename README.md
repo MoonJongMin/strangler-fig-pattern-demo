@@ -155,6 +155,16 @@ http POST http://localhost:8083/connectors/ < register-jdbc-mysql-sink-owners.js
 ## Consume messages from CDC-related Apache Kafka topics
 This command is to get data from kafka topics and not tightly related to thid demo.
 When you run the below commands, if you have an error response that "network XXX not found.", run the command "docker network ls" and than find right network name for this demo.
+
+Listing kafka meta information to find topics in a kafka broker.
+```
+docker run --tty --rm \
+    --network strangler-fig-pattern-demo_default \
+    debezium/tooling:1.1 \
+    kafkacat -b kafka:9092 -L
+```
+
+Getting messages from each kafka topic.
 ```
 docker run --tty --rm \
     --network strangler-fig-pattern-demo_default \
